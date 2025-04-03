@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../src/images/homepage_background.jpg');
+  background-size: cover;
+  background-blend-mode: darken;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Home Navigation Bar */
+.topnav {
+  overflow: hidden;
+  background-color: #141852;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.topnav a {
+  color: #FFFFFF;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 1.5rem; 
+  margin-left: 10px;
+}
+
+.topnav a:hover {
+  color: #8A8A8A;
+}
+
+.topnav a.active {
+  text-decoration: none;
+  color: #606060;
+}
+
+/*Responsive CSS codes*/
+@media (max-width: 768px) {
+  .topnav a {
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    margin-left: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .topnav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .topnav a {
+    width: 100%;
+    text-align: left;
+    padding: 12px;
+    margin: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Home Page Containers */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+/* Image hover container */
+.img-container {
+  position: relative;
+  width: 60%;
+  display: block;
+}
+
+/* Both images take full container width */
+.img-container img {
+  display: block;
+  width: 100%;
+  transition: opacity 0.3s ease;
+}
+
+/* Default image is visible by default */
+.defaultImg {
+  opacity: 1;
+}
+
+/* Hover image is initially hidden and positioned on top */
+.hoverImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+/* On hover, show the hover image and hide the default image */
+.img-container:hover .hoverImg {
+  opacity: 1;
+}
+
+.img-container:hover .defaultImg {
+  opacity: 0;
+}
+
+p {
+  color: #FFFFFF;
+  font-size: 48px;
+  text-align: center;
+}

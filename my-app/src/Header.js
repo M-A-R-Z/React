@@ -10,7 +10,7 @@ function Header() {
       <Link to="/" className="logo">
         <img src={HomePageLogo} alt="homepagelogo" />
       </Link>
-      <a href="#support">Support</a>
+      <Link to="/support">Support</Link>
       <a href="#contact">About</a>
       <a href="#news">Career</a>
       <Link to="/login">User</Link>

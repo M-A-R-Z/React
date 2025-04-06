@@ -1,0 +1,31 @@
+.support-overlay {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* horizontally center */
+    align-items: center;     /* vertically center */    
+    font-family: Arial, sans-serif;
+    position: relative;
+  }
+
+  .search-container {
+    text-align: center;
+    transform: translateY(-425px); /* Moves it 100px up */
+  }
+
+  .search-bar {
+    color: white;
+    padding: 10px 20px;
+    width: 700px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    background-color: #252525;
+    opacity: 56%;
+    outline: none;
+  }
+
+  .search-bar::placeholder {
+    color: white;
+    opacity: 1; /* Fully visible white placeholder text */
+  }

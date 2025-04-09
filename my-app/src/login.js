@@ -1,32 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import './login.css';
 import './Home.css';
 
 function LogIn() {
+  const [formData, setFormData] = useState({
+    usernameOrEmail: "",
+    password: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Implement your login logic here
+    console.log("Logging in with:", formData);
+  };
+
   return (
     <>
       <Header />
       <div className="login-overlay">
         <div className="login-container">
-          <button className="close-button">X</button>
+          <Link to="/"><button className="close-button">X</button></Link>
           <h2>LOG-IN</h2>
-          <div className="input-group">
-            <label>Username / Email</label>
-            <span className="input-icon">🔑</span>
-            <input type="text" placeholder="Username / Email" />
-          </div>
-          <div className="input-group">
-            <label>Password</label>
-            <span className="input-icon">🔒</span>
-            <input type="password" placeholder="Password" />
-          </div>
-          <div className="remember-me">
-            <input type="checkbox" />
-            <label>Remember Me</label>
-          </div>
-          <button className="login-button">LOG-IN</button>
+          <form onSubmit={handleSubmit}>
+            <div className="input-group">
+              <label>Username / Email</label>
+              <span className="input-icon">🔑</span>
+              <input
+                type="text"
+                name="usernameOrEmail"
+                placeholder="Username / Email"
+                value={formData.usernameOrEmail}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <label>Password</label>
+              <span className="input-icon">🔒</span>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="remember-me">
+              <input type="checkbox" id="remember" />
+              <label htmlFor="remember">Remember Me</label>
+            </div>
+            <button type="submit" className="login-button">LOG-IN</button>
+          </form>
           <p className="signup-text">
             Don't have an account? <Link to="/signup">Sign up</Link>
           </p>

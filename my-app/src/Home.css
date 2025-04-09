@@ -106,6 +106,7 @@ code {
 /* Default image is visible by default */
 .defaultImg {
   opacity: 1;
+  border-radius: 22px;
 }
 
 /* Hover image is initially hidden and positioned on top */
@@ -114,6 +115,7 @@ code {
   top: 0;
   left: 0;
   opacity: 0;
+  border-radius: 22px;
 }
 
 /* On hover, show the hover image and hide the default image */

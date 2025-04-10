@@ -1,0 +1,46 @@
+/* Apply dashboard background only when body has the .userdashboard-bg class */
+body.userdashboard-bg {
+    background: url('../src/images/userdashboard-background.png') no-repeat center center;
+    background-size: cover;
+    background-blend-mode: darken;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  }
+  
+  /* Dashboard navigation bar */
+  .userdashboard-nav {
+    display: flex;               /* Use flexbox for layout */
+    justify-content: center;     /* Center nav items horizontally */
+    align-items: center;         /* Center nav items vertically */
+    width: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+  }
+  
+  /* Navigation links (the icons) styling */
+  .userdashboard-nav .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;      /* Removes link underline */
+    margin-right: 80px;         /* Spacing between icons */
+  }
+  
+  /* Remove extra margin on the last icon */
+  .userdashboard-nav .icon:last-child {
+    margin-right: 0;
+  }
+  
+  /* Image styling for the icons */
+  .userdashboard-nav .icon img {
+    width: 70%;  /* All icons are set to the same width */
+  }
+
+    /* Hover effect for icons */
+    .userdashboard-nav .icon img:hover {
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+    }

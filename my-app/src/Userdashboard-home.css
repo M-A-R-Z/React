@@ -1,0 +1,107 @@
+/* DashBoard Home */
+/* Container that wraps both left and right containers */
+.dashboard-container {
+    display: flex;              
+    flex-direction: row;        
+    justify-content: space-between; 
+    /* Change alignment so that items stretch to the same height */
+    align-items: stretch;    
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Left container styling */
+  .left-container {
+    flex: 1;                    
+    margin-right: 20px;         
+    background-color: #D9D9D9;  
+    padding: 20px;
+    border-radius: 15px;
+    border: black solid 5px;
+    /* Remove fixed height to let Flexbox handle stretching */
+  }
+
+  .left-container > h1 {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .left-container > p {
+    text-align: center;
+    font-size: 30px;
+    padding: 10px 40px;
+    color: black;
+  }
+  
+  /* Right container styling */
+  .right-container {
+    flex: 1;                    
+    margin-left: 20px;          
+    background-color: #D9D9D9;  
+    padding: 20px;
+    border-radius: 15px;
+    border: black solid 5px;
+    /* Remove fixed height to let Flexbox handle stretching */
+  }
+
+  .right-container > h1 {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .right-container > p {
+    text-align: center;
+    font-size: 30px;
+    padding: 10px 30px;
+    color: black;
+  }
+
+  /* Button container for centering the button in each container */
+.btn-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Styling for the centered button */
+  .left-button {
+    padding: 20px 40px;
+    font-size: 30px;
+    background-color: #108800;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: inset 0 -8px 10px rgba(0, 0, 0, 0.5); /* Inset shadow at bottom */
+  }
+  
+  .left-button:hover {
+    background-color: #0D6B00;
+  }
+
+  .right-button {
+    padding: 20px 40px;
+    font-size: 30px;
+    background-color: #4300A0;  
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: inset 0 -8px 10px rgba(0, 0, 0, 0.5); /* Inset shadow at bottom */
+  }
+  
+  .right-button:hover {
+    background-color: #2F0072;
+  }
+  
+  /* Optional: For smaller screens, stack the containers vertically */
+  @media screen and (max-width: 768px) {
+    .dashboard-container {
+      flex-direction: column;
+      align-items: stretch; /* Ensure each container takes full available width */
+    }
+  
+    .left-container, .right-container {
+      margin: 0 0 20px 0;
+    }
+  }
+  

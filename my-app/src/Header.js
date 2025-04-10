@@ -11,7 +11,7 @@ function Header() {
         <img src={HomePageLogo} alt="homepagelogo" />
       </Link>
       <Link to="/support">Support</Link>
-      <a href="#contact">About</a>
+      <a href="/about">About</a>
       <a href="#news">Career</a>
       <Link to="/login">User</Link>
     </nav>

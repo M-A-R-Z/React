@@ -5,8 +5,6 @@ import HomePageLogo from './images/homepage_logo.png';
 import UserIcon from './images/userIconMale.png'; 
 import './Home.css';
 
-
-
 function Header() {
   const { isAuthenticated } = useContext(AuthContext);
 
@@ -22,7 +20,7 @@ function Header() {
         // Here you can style or import an icon of your choice.
         <span className="user-icon">
           {/* Example using Unicode emoji or an icon font: */}
-          <img src={UserIcon} alt="user-icon" className="user-icon" />
+          <Link to='/UserdashboardHome'><img src={UserIcon} alt="user-icon" className="user-icon" /></Link>
         </span>
       ) : (
         <Link to="/login">User</Link>

@@ -56,10 +56,7 @@ function About() {
   return (
     <>
       <Header />
-      <div className="container">
-        <p>What do you dream of?</p>
-        <Link to="/login" className="img-container">
-        </Link>
+      <div className="aboutintro-container">
       </div>
 
       <div className="about-container">

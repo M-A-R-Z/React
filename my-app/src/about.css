@@ -2,6 +2,16 @@
     background-size: cover;
     
 }
+
+.aboutintro-container {
+    background-image: url('./images/homepage_background.jpg');
+    background-size: cover;
+    height: 70vh;
+    background-repeat: no-repeat;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent overflow of text */
+}
 /* CSS for first div */
 .pathfinder1 {
     width: 448.85px;

@@ -15,9 +15,7 @@
     color: #61dafb;
   }
   
-  /* ==========================
-     Login Box
-     ========================== */
+  /* Login Box */
 
      .login-overlay {
       position: fixed;
@@ -63,9 +61,7 @@
       color: #666;
     }
     
-    /* ==========================
-       Input Fields (DI KO MAROUND NG AYOS YONG BORDER HUHU)
-       ========================== */
+    /* Input Fields (DI KO MAROUND NG AYOS YONG BORDER HUHU) */
     .input-group {
       margin-bottom: 15px;
       position: relative;
@@ -100,9 +96,7 @@
       font-size: 18px;
     }
     
-    /* ==========================
-       Remember Me Checkbox
-       ========================== */
+    /* Remember Me Checkbox */
     .remember-me {
       display: flex;
       align-items: center;
@@ -114,9 +108,7 @@
       margin-right: 10px;
     }
     
-    /* ==========================
-       Login Button
-       ========================== */
+    /* Login Button */
     .login-button {
       width: 100%;
       background: #FFD700;
@@ -133,9 +125,7 @@
       background: #FFEE6D;
     }
     
-    /* ==========================
-       Signup Link
-       ========================== */
+    /* Signup Link */
     .signup-text {
       font-size: 14px;
       margin-top: 15px;
@@ -149,3 +139,55 @@
     .signup-text a:hover {
       text-decoration: underline;
     }
+
+    /* Responsive Design Adjustments */
+@media (max-width: 768px) {
+  .login-container {
+    width: 90%;             /* Adjust width to a percentage on smaller screens */
+    padding: 20px;          /* Slightly reduce padding */
+    margin: 20px auto;      /* Adjust margin for better spacing */
+  }
+
+  .input-group input {
+    padding: 10px;          /* Adjust input padding */
+    padding-left: 35px;      /* Adjust left padding for the icon */
+  }
+
+  .input-icon {
+    top: 25px;              /* Adjust icon vertical positioning */
+    font-size: 16px;        /* Slightly reduce font size */
+  }
+
+  .login-button {
+    font-size: 14px;        /* Adjust button font size */
+    padding: 10px;          /* Adjust button padding */
+  }
+
+  .close-button {
+    top: 10px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    width: 95%;             /* Almost full-width for very small screens */
+    padding: 15px;          /* Further reduce padding */
+    margin: 10px auto;      /* Reduce margin */
+  }
+
+  .input-group input {
+    padding: 8px;           /* Further adjust input padding */
+    padding-left: 32px;
+  }
+
+  .input-icon {
+    top: 22px;
+    font-size: 15px;
+  }
+
+  .login-button {
+    font-size: 13px;
+    padding: 8px;
+  }
+}

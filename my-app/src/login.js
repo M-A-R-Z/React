@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Header from './Header';
+import { AuthContext } from './Authentication';
 import './login.css';
 import './Home.css';
 
 function LogIn() {
+  const { loginUser } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     usernameOrEmail: "",
     password: ""
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,8 +19,16 @@ function LogIn() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Implement your login logic here
-    console.log("Logging in with:", formData);
+    console.log("Attempting login with:", formData);
+    
+    // Validate user credentials using the context
+    const success = loginUser(formData);
+    if (success) {
+      navigate("/");
+    } else {
+      // Display error as a pop-up alert
+      alert("Invalid credentials. Please check your email/username or password.");
+    }
   };
 
   return (
@@ -32,7 +43,7 @@ function LogIn() {
               <label>Username / Email</label>
               <span className="input-icon">🔑</span>
               <input
-                type="text"
+                type="email"
                 name="usernameOrEmail"
                 placeholder="Username / Email"
                 value={formData.usernameOrEmail}
@@ -47,6 +58,7 @@ function LogIn() {
                 type="password"
                 name="password"
                 placeholder="Password"
+                value={formData.password}
                 onChange={handleChange}
                 required
               />

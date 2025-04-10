@@ -119,3 +119,65 @@
 .signup-button:hover {
   background: #FFEE6D;
 }
+
+/* Responsive Design Adjustments for Signup Overlay and Container */
+@media (max-width: 768px) {
+  .signup-container {
+    width: 90%;             /* Change fixed width to a percentage */
+    padding: 20px;          /* Reduce padding for smaller screens */
+    margin: 20px;           /* Adjust margin for consistent spacing */
+    border-radius: 30px;    /* Optionally reduce border radius if needed */
+  }
+
+  .input-field {
+    width: 90%;             /* Increase width flexibility */
+    padding: 15px;          /* Slightly reduce padding */
+    font-size: 14px;        /* Decrease font size for better fit */
+  }
+
+  .input-row {
+    width: 95%;             /* Use more flexible width */
+    gap: 15px;              /* Reduce gap between inputs */
+  }
+
+  .input-row input,
+  .input-row select {
+    font-size: 14px;        /* Adjust font size for consistency */
+  }
+
+  .signup-button {
+    width: 60%;             /* Increase button width percentage */
+    font-size: 14px;        /* Reduce font size for smaller screen */
+    padding: 10px;          /* Reduce padding to fit the layout */
+    margin: 20px auto 0;     /* Center the button with auto margins */
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-container {
+    width: 95%;             /* Almost full width on very small screens */
+    padding: 15px;          /* Further reduce padding */
+    margin: 10px;           /* Tighter margins */
+    border-radius: 20px;    /* Further adjust border radius if desired */
+  }
+
+  .input-field {
+    width: 100%;            /* Make the input fields full width */
+    padding: 12px;          /* Reduce padding */
+    font-size: 13px;        /* Further decrease font size */
+  }
+
+  .input-row {
+    width: 100%;            /* Use full width for the row */
+    gap: 10px;              /* Reduce gap further */
+    flex-direction: column; /* Stack inputs vertically if space is too tight */
+  }
+
+  .signup-button {
+    width: 70%;             /* Adjust the button width for better touch usability */
+    font-size: 13px;
+    padding: 8px;
+    margin: 20px auto 0;     /* Center and adjust top margin */
+  }
+}
+

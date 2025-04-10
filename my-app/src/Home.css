@@ -31,10 +31,9 @@ code {
 .topnav a {
   color: #FFFFFF;
   text-align: center;
-  padding-right: 20px;
+  padding-right: 30px;
   text-decoration: none;
   font-size: 1.5rem; 
-  margin-left: 10px;
 }
 
 .topnav a.logo img {
@@ -131,4 +130,15 @@ p {
   color: #FFFFFF;
   font-size: 48px;
   text-align: center;
+}
+
+/* UserIcon */
+.user-icon {
+  width: 66px;
+}
+
+.user-icon:hover {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
 }

@@ -1,10 +1,15 @@
-// Header.js
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from './Authentication';
 import HomePageLogo from './images/homepage_logo.png';
+import UserIcon from './images/userIconMale.png'; 
 import './Home.css';
 
+
+
 function Header() {
+  const { isAuthenticated } = useContext(AuthContext);
+
   return (
     <nav className="topnav">
       <Link to="/" className="logo">
@@ -13,7 +18,15 @@ function Header() {
       <Link to="/support">Support</Link>
       <a href="#contact">About</a>
       <a href="#news">Career</a>
-      <Link to="/login">User</Link>
+      {isAuthenticated ? (
+        // Here you can style or import an icon of your choice.
+        <span className="user-icon">
+          {/* Example using Unicode emoji or an icon font: */}
+          <img src={UserIcon} alt="user-icon" className="user-icon" />
+        </span>
+      ) : (
+        <Link to="/login">User</Link>
+      )}
     </nav>
   );
 }

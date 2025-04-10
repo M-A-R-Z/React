@@ -29,3 +29,32 @@
     color: white;
     opacity: 1; /* Fully visible white placeholder text */
   }
+
+  /* Responsive Design Adjustments for Support Overlay and Search Bar */
+@media (max-width: 768px) {
+  .search-container {
+    /* Adjust the vertical position for tablet screens */
+    transform: translateY(-200px);
+  }
+
+  .search-bar {
+    /* Use a percentage for flexible width on smaller screens */
+    width: 90%;
+    font-size: 14px;     /* Slightly smaller font */
+    padding: 8px 16px;   /* Adjust padding for a more compact look */
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container {
+    /* Further adjust vertical positioning for very small screens */
+    transform: translateY(-150px);
+  }
+
+  .search-bar {
+    width: 95%;          /* Increase width to occupy more space */
+    font-size: 13px;     /* Further reduce font size for readability */
+    padding: 8px 14px;   /* Adjust padding accordingly */
+  }
+}
+  

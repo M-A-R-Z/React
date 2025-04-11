@@ -19,7 +19,7 @@ function Userdashboard() {
             <Link to="/UserdashboardHome" className="icon">
                 <img src={HomeIcon} alt="dashboardIcon" />
             </Link>
-            <Link to="/" className="icon">
+            <Link to="/Assessment" className="icon">
                 <img src={AssessmentIcon} alt="dashboardIcon" />
             </Link>
             <Link to="/" className="icon">

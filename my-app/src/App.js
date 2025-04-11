@@ -8,22 +8,24 @@ import Support from './support'; // Make sure you've created a Support component
 import About from './about'; // Make sure you've created an About component
 import Userdashboard from './Userdashboard'; // Make sure you've created a Userdashboard component
 import UserdashboardHome from './Userdashboard-home'; // Make sure you've created a UserdashboardHome component
+import Assessment from './Assessment'; // New component for questionnaire
 
 function App() {
   return (
     <AuthProvider>
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/Userdashboard" element={<Userdashboard />} />
-        <Route path="/UserdashboardHome" element={<UserdashboardHome />} />
-        <Route path="/about" element={<About />} />
-        {/* Add more routes as needed */}
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/support" element={<Support />} />
+          <Route path="/Userdashboard" element={<Userdashboard />} />
+          <Route path="/UserdashboardHome" element={<UserdashboardHome />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/Assessment" element={<Assessment />} />
+          {/* Add more routes as needed */}
+        </Routes>
+      </Router>
     </AuthProvider>
   );
 }

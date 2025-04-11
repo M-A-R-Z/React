@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Header from './Header';
 //import FindOutButton from './images/FindOutNow button.jpg';
 //import FindOutHover from './images/FindOutNow hover.jpg';

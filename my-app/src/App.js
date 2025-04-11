@@ -9,6 +9,7 @@ import About from './about'; // Make sure you've created an About component
 import Userdashboard from './Userdashboard'; // Make sure you've created a Userdashboard component
 import UserdashboardHome from './Userdashboard-home'; // Make sure you've created a UserdashboardHome component
 import UserdashboardFAQ from './Userdashboard-FAQs';
+import Result from './result'; // Make sure you've created a Result component
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/UserdashboardHome" element={<UserdashboardHome />} />
         <Route path="/about" element={<About />} />
         <Route path="/Userdashboard-FAQs" element={<UserdashboardFAQ />} />
+        <Route path="/Result" element={<Result />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>

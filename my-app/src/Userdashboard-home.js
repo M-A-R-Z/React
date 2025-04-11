@@ -24,7 +24,7 @@ function UserdashboardHome() {
           <div className="btn-container">
             <button className="right-button">View Statistics</button>
           </div>
-        </div>
+        </div><br/><br/><br/>
       </div>
     </>
   );

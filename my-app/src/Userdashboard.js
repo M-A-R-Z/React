@@ -22,7 +22,7 @@ function Userdashboard() {
             <Link to="/" className="icon">
                 <img src={AssessmentIcon} alt="dashboardIcon" />
             </Link>
-            <Link to="/" className="icon">
+            <Link to="/Result" className="icon">
                 <img src={StatisticsIcon} alt="dashboardIcon" />
             </Link>
             <Link to="/" className="icon">

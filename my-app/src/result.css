@@ -1,0 +1,98 @@
+/* CSS for STEM img container */
+
+.result-STEM {
+    margin: 20px 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column; /* ensures image and text stack, if needed */;
+}
+
+.result-STEM > img {
+    width: 85%;
+    display: block;      /* makes the element block-level */
+    margin: 0 auto;  
+    padding-top: 10px;    /* centers the image horizontally */
+}
+
+/* CSS for STEM description container */
+.result-STEM > p {
+    color: black;
+    font-size: 35px;
+    text-align: justify;
+    margin-left: 40px;
+    margin-right: 40px;
+    font-weight: bold;
+}
+
+/* CSS for STEM box button */
+.bottom-container{
+    background-color: #D9D9D9;  
+    padding: 20px;
+    border-radius: 15px;
+    border: black solid 5px;
+    width: 85%;
+    margin: 30px auto; /* This will center it horizontally */
+    display: flex;     /* Flexbox for layout */
+    flex-direction: column;
+    align-items: center; /* Centers child elements horizontally */
+  }
+
+  .bottom-container > h1 {
+    text-align: center;
+    font-size: 40px;
+  }
+
+  .bottom-container > p {
+    text-align: center;
+    font-size: 35px;
+    padding: 0px 20px;
+    color: black;
+  }
+
+/* CSS for buttons container */
+.result-btn-container {
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 40px;
+    display: flex;              
+    flex-direction: row;   
+
+  }
+  
+  /* Styling for the centered button */
+  .generate-btn {
+    flex: 1;                     /* Flexbox for layout */
+    padding: 30px 40px;
+    font-size: 30px;
+    background-color: #108800;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: inset 0 -8px 10px rgba(0, 0, 0, 0.5); /* Inset shadow at bottom */
+    margin-right: 40px;
+    width: 700px;
+    font-weight: bold;
+  }
+  
+  .generate-btn:hover {
+    background-color: #0D6B00;
+  }
+
+  .cancel-btn {
+    flex: 1;
+    padding: 20px 40px;
+    font-size: 30px;
+    background-color: #880000;
+    color: #fff;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: inset 0 -8px 10px rgba(0, 0, 0, 0.5); /* Inset shadow at bottom */
+    font-weight: bold;
+  }
+
+  .cancel-btn:hover {
+    background-color: #6B0000;
+  }

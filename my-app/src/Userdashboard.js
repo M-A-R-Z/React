@@ -31,8 +31,8 @@ function Userdashboard() {
             <Link to="/" className="icon">
                 <img src={CareersIcon} alt="dashboardIcon" />
             </Link>
-            <Link to="/" className="icon">
-                <img src={FAQSIcon} alt="dashboardIcon" />
+            <Link to="/Userdashboard-FAQs" className="icon">
+                <img src={FAQSIcon} alt="dashboardFAQs" />
             </Link>
         </nav>
     </Layout>

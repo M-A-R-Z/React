@@ -135,6 +135,8 @@
     font-size: 14px;        /* Decrease font size for better fit */
   }
 
+
+
   .input-row {
     width: 95%;             /* Use more flexible width */
     gap: 15px;              /* Reduce gap between inputs */

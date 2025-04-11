@@ -3,6 +3,8 @@ body.userdashboard-bg {
     background: url('../src/images/userdashboard-background.png') no-repeat center center;
     background-size: cover;
     background-blend-mode: darken;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     height: 100vh;
     margin: 0;
   }

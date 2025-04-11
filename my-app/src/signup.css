@@ -169,6 +169,12 @@
     font-size: 13px;        /* Further decrease font size */
   }
 
+/* Style the date input's calendar icon for WebKit browsers to appear white */
+.input-field[type="date"]::-webkit-calendar-picker-indicator {
+  filter: brightness(0) saturate(100%) invert(1);
+}
+
+
   .input-row {
     width: 100%;            /* Use full width for the row */
     gap: 10px;              /* Reduce gap further */

@@ -9,7 +9,8 @@ import About from './about'; // Make sure you've created an About component
 import Userdashboard from './Userdashboard'; // Make sure you've created a Userdashboard component
 import UserdashboardHome from './Userdashboard-home'; // Make sure you've created a UserdashboardHome component
 import UserdashboardFAQ from './Userdashboard-FAQs';
-import Result from './result'; // Make sure you've created a Result component
+import Result from './result'; // Make sure you've created a Result 
+import AssessmentPage from './Assessment'; // Make sure you've created an Assessment component
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/Userdashboard-FAQs" element={<UserdashboardFAQ />} />
         <Route path="/Result" element={<Result />} />
+        <Route path="/Assessment" element={<AssessmentPage />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>

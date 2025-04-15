@@ -6,9 +6,7 @@ function AssessmentPage() {
   useEffect(() => {
     fetch("http://127.0.0.1:5000/questions")
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data); // for debugging
-        setQuestions(data); // store in state
+      .then((data) => {setQuestions(data); // store in state
       })
       .catch((error) => {
         console.error("Error fetching questions:", error);
@@ -18,11 +16,12 @@ function AssessmentPage() {
   return (
     <div>
       <h1>Assessment</h1>
+      <p>Answer the following questions:</p>
       <form>
         {questions.map((question, index) => (
           <div key={index} className="question-block">
             <p>
-              {index + 1}. {question.text}
+              {index + 1}. {question.questiontext}
             </p>
 
             <label>

@@ -4,7 +4,7 @@ function AssessmentPage() {
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:5000/questions")
+    fetch("http://127.0.0.1:5000/Assessment")
       .then((res) => res.json())
       .then((data) => {setQuestions(data); // store in state
       })

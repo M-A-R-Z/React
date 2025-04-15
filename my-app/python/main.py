@@ -28,8 +28,7 @@ def run_algorithm():
 
 @app.route("/Assessment")
 def get_questions():
-    sql.select_questions()
-    response = sql.table("questions").select("*").execute()
+    response = sql.select_questions()
     return jsonify(response.data)
 
 

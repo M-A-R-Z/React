@@ -33,6 +33,12 @@ function AssessmentPage() {
             <label>
               <input type="radio" name={`q${index}`} value="3" /> 3
             </label>
+            <label>
+              <input type="radio" name={`q${index}`} value="4" /> 4
+            </label>
+            <label>
+              <input type="radio" name={`q${index}`} value="5" /> 5
+            </label>
           </div>
         ))}
         <button type="submit">Submit</button>

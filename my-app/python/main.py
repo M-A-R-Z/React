@@ -29,7 +29,7 @@ def run_algorithm():
 @app.route("/Assessment")
 def get_questions():
     response = sql.select_questions()
-    return jsonify(response.data)
+    return jsonify(response)
 
 
 @app.route("/recommendation")

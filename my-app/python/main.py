@@ -1,6 +1,7 @@
 from SupaBaseConnector import SupaBaseConnector
 from KNN import KNN
 from flask import Flask, jsonify
+from flask_cors import CORS
 
 
 sample_answers = [[5, 4, 1]]
@@ -9,6 +10,7 @@ strand_list = []
 dataset_values = []
 sql = SupaBaseConnector()
 app = Flask(__name__)
+CORS(app)
 
 def run_algorithm():
     sql.select_initial_data()
@@ -37,4 +39,5 @@ def get_recommendation():
     return jsonify({"recommendation": "Recommendation logic executed."})
 
 if __name__ == '__main__':
+    
     app.run(debug=True)

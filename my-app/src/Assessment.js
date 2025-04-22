@@ -25,7 +25,7 @@ function AssessmentPage() {
   const handleOptionChange = (e) => {
     setAnswers({
       ...answers,
-      [currentIndex]: e.target.value,
+      [currentIndex]: parseInt(e.target.value),
     });
   };
 
@@ -40,10 +40,10 @@ function AssessmentPage() {
 
   const handleSubmit = async () => {
     // Here you can process the collected answers
-    const response = await axios.post('http://localhost:5000/submit', {answer: setAnswers,
+    const response = await axios.post('http://localhost:5000/submit', {answers: answers,
     });
     console.log('Response from Flask:', response.data);
-    console.log('Submitted answers:', answers);
+
     // e.g., send to server or navigate to results page
     alert('Assessment submitted!');
   };

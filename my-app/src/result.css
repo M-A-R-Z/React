@@ -1,6 +1,6 @@
 /* CSS for STEM img container */
 
-.result-STEM {
+.result{
     margin: 20px 40px;
     display: flex;
     align-items: center;
@@ -8,7 +8,7 @@
     flex-direction: column; /* ensures image and text stack, if needed */;
 }
 
-.result-STEM > img {
+.result > img {
     width: 85%;
     display: block;      /* makes the element block-level */
     margin: 0 auto;  
@@ -16,7 +16,7 @@
 }
 
 /* CSS for STEM description container */
-.result-STEM > p {
+.result > p {
     color: black;
     font-size: 35px;
     text-align: justify;

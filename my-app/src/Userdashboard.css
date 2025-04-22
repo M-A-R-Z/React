@@ -46,3 +46,8 @@ body.userdashboard-bg {
         opacity: 0.5;
         transition: opacity 0.3s ease;
     }
+
+    .userdashboard-nav .icon.active img {
+      border-bottom: 2px solid #000;
+      padding-bottom: 4px; /* optional spacing */
+    }

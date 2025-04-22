@@ -1,0 +1,70 @@
+body.assessment-bg {
+    background: url('../src/images/userdashboard-background.png') no-repeat center center;
+    background-size: cover;
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    margin: 0;
+  }
+
+  /* Container for a single-question view */
+.question-container {
+  width: 70%;
+  margin: 60px auto;
+  padding: 20px;
+  background: #ffffff;
+  border: 5px solid #141852;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
+}
+
+.question-container > p {
+  color: black;
+}
+
+/* Question text */
+.question-text {
+  font-size: 30px;
+  margin: 30px;
+  color: black;
+}
+
+/* Button row container */
+.button-row {
+  text-align: center;
+  margin-top: 70px;
+}
+
+/* Next/Submit button styling */
+.next-button {
+  padding: 10px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #4a90e2;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.next-button:hover {
+  background-color: #357ab8;
+}
+
+.option-group {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 30px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+

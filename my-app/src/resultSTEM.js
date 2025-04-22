@@ -6,11 +6,11 @@ import STEM from './images/STEM.png';
 
 
 
-function Result() {
+function ResultSTEM() {
 return (
     <>
         <Userdashboard />
-        <div className="result-STEM">
+        <div className="result">
             <img src={STEM} alt="stem"/>
             <p>Based on your answers, PathFinder suggests the STEM (Science, Technology, Engineering, and Mathematics) strand is the best fit for you. This strand aligns with your skills, interests, and goals.</p>
             <p>The STEM strand opens doors to dynamic and high-demand careers. By pursuing any of these courses, you’ll be equipped with skills for professions that significantly impact society while offering competitive salaries.</p>
@@ -33,4 +33,4 @@ return (
 );
 }
 
-export default Result;
+export default ResultSTEM;

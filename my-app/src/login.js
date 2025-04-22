@@ -24,7 +24,7 @@ function LogIn() {
     // Validate user credentials using the context
     const success = loginUser(formData);
     if (success) {
-      navigate("/");
+      navigate("/UserdashboardHome");
     } else {
       // Display error as a pop-up alert
       alert("Invalid credentials. Please check your email/username or password.");

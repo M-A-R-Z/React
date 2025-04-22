@@ -1,6 +1,7 @@
 import React from 'react';
 import Userdashboard from "./Userdashboard"; // import the user dashboard component
 import './Userdashboard-home.css';
+import { Link } from 'react-router-dom';
 
 function UserdashboardHome() {
   return (
@@ -13,7 +14,7 @@ function UserdashboardHome() {
             Find out what is your desired course and possible future career by taking our assessment!
           </p>
           <div className="btn-container">
-            <button className="left-button">Take Assessment</button>
+            <Link to='/Assessment'><button className="left-button">Take Assessment</button></Link>
           </div>
         </div>
         <div className="right-container">

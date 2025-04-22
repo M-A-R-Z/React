@@ -1,49 +1,96 @@
+import Layout from "./Layout";
+import axios from 'axios';
 import React, { useEffect, useState } from "react";
+import "./Assessment.css"; // Import your CSS file for styling
+import Header from "./Header";
 
 function AssessmentPage() {
   const [questions, setQuestions] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [answers, setAnswers] = useState({});
+  
+
 
   useEffect(() => {
     fetch("http://127.0.0.1:5000/Assessment")
       .then((res) => res.json())
-      .then((data) => {setQuestions(data); // store in state
+      .then((data) => {
+        setQuestions(data);
       })
       .catch((error) => {
         console.error("Error fetching questions:", error);
       });
   }, []);
 
-  return (
-    <div>
-      <h1>Assessment</h1>
-      <p>Answer the following questions:</p>
-      <form>
-        {questions.map((question, index) => (
-          <div key={index} className="question-block">
-            <p>
-              {index + 1}. {question.questiontext}
-            </p>
+  const handleOptionChange = (e) => {
+    setAnswers({
+      ...answers,
+      [currentIndex]: e.target.value,
+    });
+  };
 
-            <label>
-              <input type="radio" name={`q${index}`} value="1" /> 1
-            </label>
-            <label>
-              <input type="radio" name={`q${index}`} value="2" /> 2
-            </label>
-            <label>
-              <input type="radio" name={`q${index}`} value="3" /> 3
-            </label>
-            <label>
-              <input type="radio" name={`q${index}`} value="4" /> 4
-            </label>
-            <label>
-              <input type="radio" name={`q${index}`} value="5" /> 5
-            </label>
+  const handleNext = (e) => {
+    e.preventDefault();
+    if (currentIndex < questions.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      handleSubmit();
+    }
+  };
+
+  const handleSubmit = async () => {
+    // Here you can process the collected answers
+    const response = await axios.post('http://localhost:5000/submit', {answer: setAnswers,
+    });
+    console.log('Response from Flask:', response.data);
+    console.log('Submitted answers:', answers);
+    // e.g., send to server or navigate to results page
+    alert('Assessment submitted!');
+  };
+
+  if (questions.length === 0) {
+    return <Layout bodyClass="assessment-bg"><Header /><p>Loading questions...</p></Layout>;
+  }
+
+  const question = questions[currentIndex];
+  const selectedValue = answers[currentIndex] || "";
+
+  return (
+    <Layout bodyClass="assessment-bg">
+      <Header />
+      <div className="question-container">
+        <p>
+          Question {currentIndex + 1} of {questions.length}
+        </p>
+        <p className="question-text">{question.questiontext}</p>
+        <form onSubmit={handleNext}>
+          <div className="option-group">
+            {[1, 2, 3, 4, 5].map((num) => (
+              <label key={num} className="option-label">
+                <input
+                  type="radio"
+                  name={`q${currentIndex}`}
+                  value={num}
+                  checked={selectedValue === `${num}`}
+                  onChange={handleOptionChange}
+                />
+                {num}
+              </label>
+            ))}
           </div>
-        ))}
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+
+          <div className="button-row">
+            <button
+              type="submit"
+              className="next-button"
+              disabled={!selectedValue}
+            >
+              {currentIndex < questions.length - 1 ? 'Next' : 'Submit'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </Layout>
   );
 }
 

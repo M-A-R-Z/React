@@ -3,6 +3,7 @@ from sklearn.neighbors import KNeighborsClassifier
 
 
 
+
 class KNN:
     def __init__(self, sample_answers, dataset_list, strand_list):
         self.sample_answers = sample_answers
@@ -15,9 +16,13 @@ class KNN:
         self.predict(knn)
         
         
+        self.predict(knn)
+        
+        
 
     def calculate_k(self):
         model = KNeighborsClassifier()
+        param_grid = {'n_neighbors': [x for x in range(5, 11)]}
         param_grid = {'n_neighbors': [x for x in range(5, 11)]}
         grid_search = GridSearchCV(model, param_grid, cv=5)
         grid_search.fit(self.dataset_list, self.strand_list)

@@ -4,7 +4,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 
 
-sample_answers = [[40, 24, 30]]
+sample_answers = {"STEM:": 40, "HUMSS": 25, "ABM": 32}
 dataset_list = []
 strand_list = []
 dataset_values = []
@@ -12,7 +12,7 @@ sql = SupaBaseConnector()
 app = Flask(__name__)
 CORS(app)
 
-def run_algorithm():
+def run_algorithm(user_dataset):
     sql.select_initial_data()
     datasets = sql.fetch_data() #<-----Dictionaries within a list
     print(datasets)
@@ -23,8 +23,28 @@ def run_algorithm():
         dataset_list.append(dataset_values)
         strand_list.append(values[-1])
 
-    algorithm = KNN(sample_answers, dataset_list, strand_list)
-    algorithm.predict()
+    predict_dataset = list(user_dataset.values())
+    predict_dataset = [predict_dataset]  # Convert to 2D array for prediction
+    algorithm = KNN(predict_dataset, dataset_list, strand_list)
+    algorithm.start_algorithm()
+
+
+def merge_strand_answers(answers): 
+    strand_scores = {"STEM": 0, "HUMSS": 0, "ABM":0}
+    for i in range(len(answers)):
+
+    
+        if i % 3 == 0:
+            strand_scores["STEM"] += answers[i]
+        elif i % 3 == 1:
+            strand_scores["HUMSS"] += answers[i]
+        else:
+            strand_scores["ABM"] += answers[i]
+    print(strand_scores)
+    return strand_scores
+
+run_algorithm(sample_answers)       
+
 
 @app.route("/Assessment")
 def get_questions():
@@ -35,9 +55,11 @@ def get_questions():
 def submit_answers():
     data = request.get_json()
     answers = data.get('answers', [])
-    print(answers)
-    # Here you would typically save the answers to a database or process them
+    print(f"Test {answers}")
+    user_dataset = merge_strand_answers(answers) 
+    run_algorithm(user_dataset)
     
+    return jsonify({"message": "Answers received successfully!"}), 200
 
 
 if __name__ == '__main__':

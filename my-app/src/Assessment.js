@@ -1,5 +1,6 @@
 import Layout from "./Layout";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import "./Assessment.css"; // Import your CSS file for styling
 import Header from "./Header";
@@ -8,7 +9,7 @@ function AssessmentPage() {
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState({});
-  
+  const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -39,13 +40,22 @@ function AssessmentPage() {
   };
 
   const handleSubmit = async () => {
+    
     // Here you can process the collected answers
-    const response = await axios.post('http://localhost:5000/submit', {answers: answers,
-    });
+    const response = await axios.post('http://localhost:5000/submit', {answers: Object.values(answers)});
     console.log('Response from Flask:', response.data);
-
-    // e.g., send to server or navigate to results page
-    alert('Assessment submitted!');
+    const recommendation = response.data.recommendation; // Assuming the response contains results
+    const STEM = response.data.STEM; 
+    const HUMSS = response.data.HUMSS; 
+    const ABM = response.data.ABM; 
+    if (recommendation === "STEM") {
+      page_to_navigate = "/resultSTEM";
+    } else if (recommendation === "HUMSS") {
+      page_to_navigate = "/resultHUMSS";
+    }else if (recommendation === "ABM") {
+      page_to_navigate = "/resultABM";
+    }
+    navigate(page_to_navigate, {state: {"STEM": STEM, "HUMSS": HUMSS, "ABM": ABM}});
   };
 
   if (questions.length === 0) {

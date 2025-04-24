@@ -2,16 +2,19 @@ import React from 'react';
 import Userdashboard from "./Userdashboard"; // import the user dashboard component
 import './Userdashboard-home.css';
 import './result.css'; // Import the CSS file for styling
-import STEM from './images/STEM.png';
-
+import STEMimg from './images/STEM.png';
+import { useLocation } from 'react-router-dom'; // Import useLocation from react-router-dom
 
 
 function ResultSTEM() {
+  const location = useLocation();
+  const { STEM, HUMSS, ABM } = location.state || {};
+
 return (
     <>
         <Userdashboard />
         <div className="result">
-            <img src={STEM} alt="stem"/>
+            <img src={STEMimg} alt="stem"/>
             <p>Based on your answers, PathFinder suggests the STEM (Science, Technology, Engineering, and Mathematics) strand is the best fit for you. This strand aligns with your skills, interests, and goals.</p>
             <p>The STEM strand opens doors to dynamic and high-demand careers. By pursuing any of these courses, you’ll be equipped with skills for professions that significantly impact society while offering competitive salaries.</p>
             {/* Add your search result content here */}

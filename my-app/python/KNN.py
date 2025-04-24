@@ -13,10 +13,10 @@ class KNN:
     def start_algorithm(self):
         knn = KNeighborsClassifier(n_neighbors=self.calculate_k())
         knn.fit(self.dataset_list, self.strand_list)
-        self.predict(knn)
-        
-        
-        self.predict(knn)
+        results = self.predict(knn)
+        return results
+         
+
         
         
 
@@ -58,6 +58,8 @@ class KNN:
         else:
             recommendation = max(strand_votes, key=strand_votes.get)
             print(f"Recommendation: {recommendation}")
+        strand_votes["recommendation"] = recommendation
+        return strand_votes
 
 
     def tie_breaker(self, strand_votes, nearest_neighbors, distances):

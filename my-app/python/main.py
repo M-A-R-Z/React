@@ -7,12 +7,15 @@ from flask_cors import CORS
 sample_answers = {"STEM:": 40, "HUMSS": 25, "ABM": 32}
 dataset_list = []
 strand_list = []
-dataset_values = []
+
 sql = SupaBaseConnector()
 app = Flask(__name__)
 CORS(app)
 
 def run_algorithm(user_dataset):
+    dataset_list = []
+    strand_list = []
+    dataset_values = []
     sql.select_initial_data()
     datasets = sql.fetch_data() #<-----Dictionaries within a list
     print(datasets)
@@ -26,7 +29,8 @@ def run_algorithm(user_dataset):
     predict_dataset = list(user_dataset.values())
     predict_dataset = [predict_dataset]  # Convert to 2D array for prediction
     algorithm = KNN(predict_dataset, dataset_list, strand_list)
-    algorithm.start_algorithm()
+    results = algorithm.start_algorithm()
+    return results
 
 
 def merge_strand_answers(answers): 
@@ -43,7 +47,7 @@ def merge_strand_answers(answers):
     print(strand_scores)
     return strand_scores
 
-run_algorithm(sample_answers)       
+     
 
 
 @app.route("/Assessment")
@@ -57,9 +61,9 @@ def submit_answers():
     answers = data.get('answers', [])
     print(f"Test {answers}")
     user_dataset = merge_strand_answers(answers) 
-    run_algorithm(user_dataset)
-    
-    return jsonify({"message": "Answers received successfully!"}), 200
+    reults_data = run_algorithm(user_dataset)
+    print(f"Results: {reults_data}")
+    return jsonify(reults_data)
 
 
 if __name__ == '__main__':

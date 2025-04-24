@@ -44,10 +44,13 @@ function AssessmentPage() {
     // Here you can process the collected answers
     const response = await axios.post('http://localhost:5000/submit', {answers: Object.values(answers)});
     console.log('Response from Flask:', response.data);
+
     const recommendation = response.data.recommendation; // Assuming the response contains results
     const STEM = response.data.STEM; 
     const HUMSS = response.data.HUMSS; 
-    const ABM = response.data.ABM; 
+    const ABM = response.data.ABM;
+    const K = response.data.K;
+    let page_to_navigate = " ";
     if (recommendation === "STEM") {
       page_to_navigate = "/resultSTEM";
     } else if (recommendation === "HUMSS") {
@@ -55,7 +58,8 @@ function AssessmentPage() {
     }else if (recommendation === "ABM") {
       page_to_navigate = "/resultABM";
     }
-    navigate(page_to_navigate, {state: {"STEM": STEM, "HUMSS": HUMSS, "ABM": ABM}});
+    console.log('scores:', response.data);
+    navigate(page_to_navigate, {state: {"STEM": STEM, "HUMSS": HUMSS, "ABM": ABM, "K": K}});
   };
 
   if (questions.length === 0) {

@@ -39,7 +39,7 @@ return (
                 labels: ["STEM", "HUMSS", "ABM"], 
                 datasets: [{
                   label: "Your answers are near to this amount", 
-                  data: [STEM,HUMSS,ABM], 
+                  data: [STEM,HUMSS,ABM],  
                   backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
                   borderRadius: 10
                 }

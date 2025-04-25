@@ -21,13 +21,13 @@ function Userdashboard() {
             <NavLink to="/Assessment" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
                 <img src={AssessmentIcon} alt="Assessment" />
             </NavLink>
-            <NavLink to="/ResultSTEM" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
+            <NavLink to="/" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
                 <img src={StatisticsIcon} alt="Statistics" />
             </NavLink>
-            <NavLink to="/ResultABM" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
+            <NavLink to="/" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
                 <img src={CoursesIcon} alt="Courses" />
             </NavLink>
-            <NavLink to="/ResultHUMSS" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
+            <NavLink to="/" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
                 <img src={CareersIcon} alt="Careers" />
             </NavLink>
             <NavLink to="/Userdashboard-FAQs" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>

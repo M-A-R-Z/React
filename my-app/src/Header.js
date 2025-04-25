@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { AuthContext } from './Authentication';
 import HomePageLogo from './images/homepage_logo.png';
 import UserIcon from './images/userIconMale.png'; 
@@ -8,22 +8,36 @@ import './Home.css';
 function Header() {
   const { isAuthenticated } = useContext(AuthContext);
 
+  const linkClass = ({ isActive }) =>
+    isActive ? 'active nav-link' : 'nav-link';
+
   return (
     <nav className="topnav">
-      <Link to="/" className="logo">
+      {/* Logo always active link to home */}
+      <NavLink to="/" className="logo">
         <img src={HomePageLogo} alt="homepagelogo" />
-      </Link>
-      <Link to="/support">Support</Link>
-      <a href="/about">About</a>
-      <a href="#news">Career</a>
+      </NavLink>
+
+      {/* Standard nav items with active underline */}
+      <NavLink to="/support" className={linkClass}>
+        Support
+      </NavLink>
+      <NavLink to="/about" className={linkClass}>
+        About
+      </NavLink>
+      <NavLink to="/career" className={linkClass}>
+        Career
+      </NavLink>
+
+      {/* User icon or login link */}
       {isAuthenticated ? (
-        // Here you can style or import an icon of your choice.
-        <span className="user-icon">
-          {/* Example using Unicode emoji or an icon font: */}
-          <Link to='/UserdashboardHome'><img src={UserIcon} alt="user-icon" className="user-icon" /></Link>
-        </span>
+        <NavLink to="/UserdashboardHome" className={linkClass}>
+          <img src={UserIcon} alt="user-icon" className="user-icon" />
+        </NavLink>
       ) : (
-        <Link to="/login">User</Link>
+        <NavLink to="/login" className={linkClass}>
+          User
+        </NavLink>
       )}
     </nav>
   );

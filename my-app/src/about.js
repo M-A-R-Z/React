@@ -113,8 +113,6 @@ function About() {
         </div>
 
       </div>
-
-      
     </>
   );
 }

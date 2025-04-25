@@ -48,6 +48,7 @@ function AssessmentPage() {
     const STEM = response.data.STEM; 
     const HUMSS = response.data.HUMSS; 
     const ABM = response.data.ABM; 
+    let page_to_navigate = "";
     if (recommendation === "STEM") {
       page_to_navigate = "/resultSTEM";
     } else if (recommendation === "HUMSS") {

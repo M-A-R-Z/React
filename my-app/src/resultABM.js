@@ -4,8 +4,10 @@ import './Userdashboard-home.css';
 import './result.css'; // Import the CSS file for styling
 import ABMimg from './images/ABM.png';
 import { useLocation } from 'react-router-dom'; // Import useLocation from react-router-dom
-import {Chart as ChartJS, } from 'chart.js/auto';
+import { Chart as ChartJS } from 'chart.js/auto';
 import { Bar, Doughnut } from 'react-chartjs-2';
+
+
 
 function ResultABM() {
     const location = useLocation();
@@ -45,7 +47,7 @@ return (
               ]}
               }
               />
-            </div>  
+            </div>
             <img src={ABMimg} alt="abm"/>
             <p>Based on your answers, PathFinder suggests the ABM (Accountancy, Business, Management) strand is the best fit for you. This strand aligns with your skills, interests, and goals.</p>
             <p>The ABM strand opens doors to dynamic and high-demand careers. By pursuing any of these courses, you’ll be equipped with skills for professions that significantly impact society while offering competitive salaries.</p>

@@ -11,7 +11,8 @@ class KNN:
         self.strand_list = strand_list
 
     def start_algorithm(self):
-        knn = KNeighborsClassifier(n_neighbors=self.calculate_k())
+       
+        knn = KNeighborsClassifier(n_neighbors= self.calculate_k())
         knn.fit(self.dataset_list, self.strand_list)
         results = self.predict(knn)
         return results
@@ -42,8 +43,8 @@ class KNN:
     def predict(self, knn):
         indices, distances = self.calculate_distance(knn)
         nearest_neighbors = []
-        
-        for i in range(len(indices)):            
+        k = len(indices)
+        for i in range(k):            
             nearest_neighbors.append(self.strand_list[indices[i]])
         print(f"Nearest Neighbors: {nearest_neighbors}")
         total_stem = nearest_neighbors.count("STEM")
@@ -53,12 +54,24 @@ class KNN:
         vote_score = [total_stem, total_humss, total_abm]
         print(f"Votes: {strand_votes}")
         if vote_score.count(max(vote_score)) > 1:
+            strand_votes["tie"] = True
             recommendation = self.tie_breaker(strand_votes, nearest_neighbors, distances)
             
+            
         else:
+            strand_votes["tie"] = False
             recommendation = max(strand_votes, key=strand_votes.get)
             print(f"Recommendation: {recommendation}")
         strand_votes["recommendation"] = recommendation
+        strand_votes["neighbors"] = []
+        strand_votes["K"] = k
+        for i in range(k):
+            strand_votes["neighbors"].append({})
+            strand_votes["neighbors"][i]["id"] = int(indices[i] + 1)
+            strand_votes["neighbors"][i]["strand"] = nearest_neighbors[i]
+            strand_votes["neighbors"][i]["distance"] = float(distances[i])
+        
+
         return strand_votes
 
 
@@ -66,11 +79,18 @@ class KNN:
         tied_strands = [key for key, value in strand_votes.items() if value == max(strand_votes.values())]
         print(f"Tie between: {tied_strands}")
         weighted_distances = {"STEM": 0, "HUMSS": 0, "ABM":0}
+        strand_votes["tie_strands"] = {}
         for i in range(len(nearest_neighbors)):
             if nearest_neighbors[i] in tied_strands:
                 convert_to_weighted = float(1/distances[i])
+                
                 weighted_distances[nearest_neighbors[i]] += convert_to_weighted
+        for strand in weighted_distances:
+            if weighted_distances[strand] != 0:
+                strand_votes["tie_strands"][strand] = float(weighted_distances[strand])
         print(f"Weighted Distances: {weighted_distances}")
+        
+                
         recommendation = max(weighted_distances, key=weighted_distances.get)
         print(f"Final Recommendation: {recommendation}")
         return recommendation     

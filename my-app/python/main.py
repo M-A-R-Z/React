@@ -5,6 +5,7 @@ from flask_cors import CORS
 
 
 sample_answers = {"STEM:": 40, "HUMSS": 25, "ABM": 32}
+tie_sample_answers = {"STEM:": 31, "HUMSS": 31, "ABM": 31}
 dataset_list = []
 strand_list = []
 
@@ -30,6 +31,7 @@ def run_algorithm(user_dataset):
     predict_dataset = [predict_dataset]  # Convert to 2D array for prediction
     algorithm = KNN(predict_dataset, dataset_list, strand_list)
     results = algorithm.start_algorithm()
+    print(results)
     return results
 
 
@@ -47,8 +49,9 @@ def merge_strand_answers(answers):
     print(strand_scores)
     return strand_scores
 
-     
-
+reults_data = run_algorithm(sample_answers)
+print("---------------------------------------------------------")
+reults_data = run_algorithm(tie_sample_answers)
 
 @app.route("/Assessment")
 def get_questions():

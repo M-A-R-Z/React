@@ -4,7 +4,6 @@ import './Userdashboard-home.css';
 import './result.css'; // Import the CSS file for styling
 import HUMSSimg from './images/HUMSS.png';
 import { useLocation } from 'react-router-dom'; // Import useLocation from react-router-dom
-import {Chart as ChartJS, } from 'chart.js/auto';
 import { Bar, Doughnut } from 'react-chartjs-2';
 
 function ResultABM() {
@@ -39,7 +38,7 @@ return (
                 labels: ["STEM", "HUMSS", "ABM"], 
                 datasets: [{
                   label: "Your answers are near to this amount", 
-                  data: [STEM,HUMSS,ABM], 
+                  data: [STEM,HUMSS,ABM],  
                   backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
                   borderRadius: 10
                 }

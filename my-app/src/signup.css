@@ -1,10 +1,10 @@
+/* signup.css */
+
 /* Signup Overlay */
 .signup-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
   display: flex;
@@ -23,81 +23,79 @@
   border-radius: 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
-  margin-right: 20px;
-  margin-left: 20px;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 
-/* Close Button */
-.close-button {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 30px;
-  cursor: pointer;
-  transition: 0.3s;
-  background-color: #0B0E29;
-  border: none;
-  color: #bbb;
-}
-
-.close-button:hover {
-  color: #666;
-}
-
+/* Close & Back Buttons */
+.close-button,
 .back-button {
   position: absolute;
   top: 15px;
-  left: 15px;
   font-size: 30px;
   cursor: pointer;
   transition: 0.3s;
-  background-color: #0B0E29;
+  background: #0B0E29;
   border: none;
   color: #bbb;
 }
-
-.back-button:hover {
-  color: #666;
-}
+.close-button:hover,
+.back-button:hover { color: #666; }
+.close-button { right: 15px; }
+.back-button  { left: 15px; }
 
 /* Signup Form */
-.signup-form {
-  margin-top: 20px;
-}
-
-/* Form Title */
+.signup-form { margin-top: 20px; }
 .signup-title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
   color: white;
 }
-
-/* Input Fields */
 .input-field {
   width: 80%;
   padding: 20px;
   margin-bottom: 5px;
   border: none;
   font-size: 16px;
-  background: #f2f2f2;
-  color: white;
-  border-bottom: white 2px solid;
   background-color: #0B0E29;
+  color: white;
+  border-bottom: 2px solid white;
 }
 
-/* Row for Birthday & Gender */
+/* Birthday & Gender Row */
 .input-row {
   width: 87%;
-  margin: 0 auto 15px auto;
+  margin: 0 auto 15px;
   display: flex;
   gap: 30px;
 }
-
 .input-row input,
 .input-row select {
   flex: 1;
+}
+
+/* Password Fields Container */
+.password-field {
+  position: relative;
+  width: 80%;
+  margin: 0 auto 5px;
+}
+.show-password-btn {
+  position: absolute;
+  top: 50%;
+  right: 12%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.show-password-btn i,
+.show-password-btn svg {
+  color: #fff !important;
+  fill: #fff !important;
+  filter: invert(1) brightness(1.2);
+  font-size: 1.1em;
 }
 
 /* Signup Button */
@@ -111,81 +109,64 @@
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
+  margin: 20px auto 0;
   display: block;
-  margin: 20px 40px 0 auto;
   text-align: center;
 }
-
 .signup-button:hover {
   background: #FFEE6D;
 }
 
-/* Responsive Design Adjustments for Signup Overlay and Container */
-@media (max-width: 768px) {
-  .signup-container {
-    width: 90%;             /* Change fixed width to a percentage */
-    padding: 20px;          /* Reduce padding for smaller screens */
-    margin: 20px;           /* Adjust margin for consistent spacing */
-    border-radius: 30px;    /* Optionally reduce border radius if needed */
-  }
-
-  .input-field {
-    width: 90%;             /* Increase width flexibility */
-    padding: 15px;          /* Slightly reduce padding */
-    font-size: 14px;        /* Decrease font size for better fit */
-  }
-
-
-
-  .input-row {
-    width: 95%;             /* Use more flexible width */
-    gap: 15px;              /* Reduce gap between inputs */
-  }
-
-  .input-row input,
-  .input-row select {
-    font-size: 14px;        /* Adjust font size for consistency */
-  }
-
-  .signup-button {
-    width: 60%;             /* Increase button width percentage */
-    font-size: 14px;        /* Reduce font size for smaller screen */
-    padding: 10px;          /* Reduce padding to fit the layout */
-    margin: 20px auto 0;     /* Center the button with auto margins */
-  }
-}
-
-@media (max-width: 480px) {
-  .signup-container {
-    width: 95%;             /* Almost full width on very small screens */
-    padding: 15px;          /* Further reduce padding */
-    margin: 10px;           /* Tighter margins */
-    border-radius: 20px;    /* Further adjust border radius if desired */
-  }
-
-  .input-field {
-    width: 100%;            /* Make the input fields full width */
-    padding: 12px;          /* Reduce padding */
-    font-size: 13px;        /* Further decrease font size */
-  }
-
-/* Style the date input's calendar icon for WebKit browsers to appear white */
+/* White Calendar Icon */
 .input-field[type="date"]::-webkit-calendar-picker-indicator {
-  filter: brightness(0) saturate(100%) invert(1);
+  filter: invert(1) brightness(1.2);
+  cursor: pointer;
+}
+.input-field[type="date"]::-moz-calendar-picker-indicator {
+  filter: invert(1) brightness(1.2);
+  cursor: pointer;
 }
 
+/* Responsive: tablets */
+@media (max-width: 768px) {
+  .signup-container { width: 90%; padding: 20px; border-radius: 30px; }
+  .input-field { width: 90%; padding: 15px; font-size: 14px; }
+  .input-row { width: 95%; gap: 15px; }
+  .input-row input, .input-row select { font-size: 14px; }
+  .signup-button { width: 60%; font-size: 14px; padding: 10px; }
+}
 
+/* Responsive: phones */
+@media (max-width: 480px) {
+  .signup-container { width: 95%; padding: 15px; border-radius: 20px; }
+  .input-field { width: 100%; padding: 12px; font-size: 13px; }
   .input-row {
-    width: 100%;            /* Use full width for the row */
-    gap: 10px;              /* Reduce gap further */
-    flex-direction: column; /* Stack inputs vertically if space is too tight */
+    width: 100%;
+    gap: 10px;
+    flex-direction: column;
   }
+  .signup-button { width: 70%; font-size: 13px; padding: 8px; }
+}
 
-  .signup-button {
-    width: 70%;             /* Adjust the button width for better touch usability */
-    font-size: 13px;
-    padding: 8px;
-    margin: 20px auto 0;     /* Center and adjust top margin */
-  }
+/* ==============================
+   Make native “show password” icon white
+   ============================== */
+
+/* Edge / IE */
+input[type="password"]::-ms-reveal {
+  filter: invert(1) brightness(1.2) !important;
+}
+input[type="password"]::-ms-clear {
+  filter: invert(1) brightness(1.2) !important;
+}
+
+/* Safari (WebKit) */
+input[type="password"]::-webkit-textfield-decoration-button {
+  filter: invert(1) brightness(1.2) !important;
+}
+
+/* Newer Blink engines (Chrome/Opera) */
+input[type="password"]::-webkit-password-toggle-button {
+  filter: invert(1) brightness(1.2) !important;
 }
 

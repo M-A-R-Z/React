@@ -96,3 +96,15 @@
   .cancel-btn:hover {
     background-color: #6B0000;
   }
+
+  .graphS {
+    width: 800px !important;
+    height: 500px !important;
+    flex: none;
+    margin: 40px auto; 
+    padding: 0px 20px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    border: black solid 5px;
+  }
+  

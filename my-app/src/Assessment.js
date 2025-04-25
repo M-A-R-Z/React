@@ -1,9 +1,17 @@
 import Layout from "./Layout";
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import "./Assessment.css"; // Import your CSS file for styling
+import "./Assessment.css";
 import Header from "./Header";
+
+const likertOptions = [
+  { value: 1, label: "Strongly Disagree", className: "red" },
+  { value: 2, label: "Disagree",        className: "red" },
+  { value: 3, label: "Neutral",         className: "white" },
+  { value: 4, label: "Agree",           className: "green" },
+  { value: 5, label: "Strongly Agree",  className: "green" },
+];
 
 function AssessmentPage() {
   const [questions, setQuestions] = useState([]);
@@ -11,95 +19,105 @@ function AssessmentPage() {
   const [answers, setAnswers] = useState({});
   const navigate = useNavigate();
 
-
   useEffect(() => {
     fetch("http://127.0.0.1:5000/Assessment")
       .then((res) => res.json())
-      .then((data) => {
-        setQuestions(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching questions:", error);
-      });
+      .then(setQuestions)
+      .catch((err) => console.error("Error fetching questions:", err));
   }, []);
 
   const handleOptionChange = (e) => {
     setAnswers({
       ...answers,
-      [currentIndex]: parseInt(e.target.value),
+      [currentIndex]: parseInt(e.target.value, 10),
     });
   };
 
   const handleNext = (e) => {
     e.preventDefault();
     if (currentIndex < questions.length - 1) {
-      setCurrentIndex(currentIndex + 1);
+      setCurrentIndex((i) => i + 1);
     } else {
       handleSubmit();
     }
   };
 
   const handleSubmit = async () => {
-    
-    // Here you can process the collected answers
-    const response = await axios.post('http://localhost:5000/submit', {answers: Object.values(answers)});
-    console.log('Response from Flask:', response.data);
-
-    const recommendation = response.data.recommendation; // Assuming the response contains results
-    const STEM = response.data.STEM; 
-    const HUMSS = response.data.HUMSS; 
-    const ABM = response.data.ABM;
-    const K = response.data.K;
-    let page_to_navigate = " ";
-    if (recommendation === "STEM") {
-      page_to_navigate = "/resultSTEM";
-    } else if (recommendation === "HUMSS") {
-      page_to_navigate = "/resultHUMSS";
-    }else if (recommendation === "ABM") {
-      page_to_navigate = "/resultABM";
-    }
-    console.log('scores:', response.data);
-    navigate(page_to_navigate, {state: {"STEM": STEM, "HUMSS": HUMSS, "ABM": ABM, "K": K}});
+    const payload = { answers: Object.values(answers) };
+    const { data } = await axios.post("http://localhost:5000/submit", payload);
+    const { recommendation, STEM, HUMSS, ABM, K } = data;
+    let path = "/resultSTEM";
+    if (recommendation === "HUMSS") path = "/resultHUMSS";
+    else if (recommendation === "ABM") path = "/resultABM";
+    navigate(path, { state: { STEM, HUMSS, ABM, K } });
   };
 
-  if (questions.length === 0) {
-    return <Layout bodyClass="assessment-bg"><Header /><p>Loading questions...</p></Layout>;
+  if (!questions.length) {
+    return (
+      <Layout bodyClass="assessment-bg">
+        <Header />
+        <p>Loading questions…</p>
+      </Layout>
+    );
   }
 
   const question = questions[currentIndex];
-  const selectedValue = answers[currentIndex] || "";
+  const selected = answers[currentIndex] || "";
+
+  // compute progress %
+  const progress = ((currentIndex + 1) / questions.length) * 100;
 
   return (
     <Layout bodyClass="assessment-bg">
       <Header />
       <div className="question-container">
+        {/* Progress bar inside the container */}
+        <sub>
+          {currentIndex + 1}/{questions.length}
+        </sub>
+        <div className="progress-container">
+          <div
+            className="progress-bar"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+
         <p>
-          Question {currentIndex + 1} of {questions.length}
+          Question {currentIndex + 1}
         </p>
         <p className="question-text">{question.questiontext}</p>
+
         <form onSubmit={handleNext}>
-          <div className="option-group">
-            {[1, 2, 3, 4, 5].map((num) => (
-              <label key={num} className="option-label">
-                <input
-                  type="radio"
-                  name={`q${currentIndex}`}
-                  value={num}
-                  checked={selectedValue === `${num}`}
-                  onChange={handleOptionChange}
-                />
-                {num}
-              </label>
-            ))}
+          <div className="likert-options">
+            {likertOptions.map((opt) => {
+              const isActive = selected === opt.value;
+              return (
+                <label
+                  key={opt.value}
+                  className={`option-wrapper ${opt.className} ${isActive ? "selected" : ""}`}
+                >
+                  <span className="option-label-text">{opt.label}</span>
+                  <input
+                    type="radio"
+                    name={`q${currentIndex}`}
+                    value={opt.value}
+                    checked={isActive}
+                    onChange={handleOptionChange}
+                    className="option-input"
+                  />
+                  <span className="option-circle" />
+                </label>
+              );
+            })}
           </div>
 
           <div className="button-row">
             <button
               type="submit"
               className="next-button"
-              disabled={!selectedValue}
+              disabled={!selected}
             >
-              {currentIndex < questions.length - 1 ? 'Next' : 'Submit'}
+              {currentIndex < questions.length - 1 ? "Next" : "Submit"}
             </button>
           </div>
         </form>

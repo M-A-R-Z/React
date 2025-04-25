@@ -17,6 +17,7 @@ return (
     <>
         <Userdashboard />
         <div className="result">
+        <img src={ABMimg} alt="abm"/>
         <div className="graphS">
             <Bar
               data={{
@@ -36,19 +37,7 @@ return (
                 }
               }}
             />
-              <Doughnut data={{
-                labels: ["STEM", "HUMSS", "ABM"], 
-                datasets: [{
-                  label: "Your answers are near to this amount", 
-                  data: [STEM,HUMSS,ABM], 
-                  backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-                  borderRadius: 10
-                }
-              ]}
-              }
-              />
             </div>
-            <img src={ABMimg} alt="abm"/>
             <p>Based on your answers, PathFinder suggests the ABM (Accountancy, Business, Management) strand is the best fit for you. This strand aligns with your skills, interests, and goals.</p>
             <p>The ABM strand opens doors to dynamic and high-demand careers. By pursuing any of these courses, you’ll be equipped with skills for professions that significantly impact society while offering competitive salaries.</p>
             {/* Add your search result content here */}

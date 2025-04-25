@@ -18,8 +18,8 @@ function Userdashboard() {
             <NavLink to="/UserdashboardHome" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
                 <img src={HomeIcon} alt="Home" />
             </NavLink>
-            <NavLink to="/Assessment" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
-                <img src={AssessmentIcon} alt="Assessment" />
+            <NavLink to="/UserdashboardAssessment" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
+                <img src={AssessmentIcon} alt="UserdashboardAssessment" />
             </NavLink>
             <NavLink to="/" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
                 <img src={StatisticsIcon} alt="Statistics" />

@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom'; // Import useLocation from react
 import { Chart as ChartJS } from 'chart.js/auto';
 import { Bar, Doughnut } from 'react-chartjs-2';
 
-function ResultABM() {
+function ResultHUMSS() {
     const location = useLocation();
     const { STEM, HUMSS, ABM, K } = location.state || {};
 
@@ -15,7 +15,7 @@ return (
     <>
         <Userdashboard />
         <div className="result">
-            <img src={HUMSSimg} alt="humss"/>
+        <img src={HUMSSimg} alt="humss"/>
         <div className="graphS">
             <Bar
               data={{
@@ -35,17 +35,7 @@ return (
                 }
               }}
             />
-              <Doughnut data={{
-                labels: ["STEM", "HUMSS", "ABM"], 
-                datasets: [{
-                  label: "Your answers are near to this amount", 
-                  data: [STEM,HUMSS,ABM],  
-                  backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
-                  borderRadius: 10
-                }
-              ]}
-              }
-              />
+
             </div>
             
             <p>Based on your answers, PathFinder suggests the HUMSS (Humanities and Social Sciences) strand is the best fit for you. This strand aligns with your skills, interests, and goals.</p>
@@ -69,4 +59,4 @@ return (
 );
 }
     
-export default ResultABM;
+export default ResultHUMSS;

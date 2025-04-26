@@ -107,4 +107,40 @@
     border-radius: 20px;
     border: black solid 5px;
   }
+
+  /* Apply same styling as .result > p to paragraphs inside the tie container */
+.tie-container > p {
+  color: black;
+  font-size: 25px;
+  text-align: justify;
+  margin-left: 40px;
+  margin-right: 40px;
+  font-weight: bold;
+}
+
+/* Center the entire tie-container content */
+.tie-container {
+  width: 60%;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+}
+
+/* Make the UL shrink-wrap its items and center it */
+.tie-container ul {
+  display: inline-block;        /* shrink-wrap width to content */
+  list-style-position: inside;  /* put bullets inside the box */
+  text-align: left;             /* keep text left-aligned relative to its bullet */
+  padding: 0;                   /* remove default left padding */
+  margin: 20px auto;            /* center horizontally */
+}
+
+/* Match the LI typography to .result > p */
+.tie-container ul li {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 10px 0; /* optional spacing between items */
+}
+
   

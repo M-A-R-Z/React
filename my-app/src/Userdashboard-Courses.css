@@ -1,111 +1,123 @@
 .faq-container {
     box-sizing: border-box;
-}
-
-.faq-content {
+  }
+  
+  .faq-content {
     margin-left: 70px;
     margin-right: 200px;
-}
-
-/* Heading styles with spacing */
-.faq-content > h1 {
+  }
+  
+  /* Make all h1 in this area align left */
+  .faq-content h1 {
+    text-align: left;
+  }
+  
+  /* Heading styles with spacing */
+  .faq-content > h1 {
     color: black;
     font-size: 30px;
     margin-bottom: 20px;
     margin-top: 40px;
-}
-
-/* Paragraph and list item spacing */
-.faq-content p {
+    /* text-align: left;  — now inherited from .faq-content h1 */
+  }
+  
+  /* Paragraph and list item spacing */
+  .faq-content p {
     text-align: justify;
     color: black;
     font-size: 30px;
     line-height: 1.5;
     margin-bottom: 30px;
-}
-
-.faq-content li {
+  }
+  
+  .faq-content li {
     text-align: justify;
     color: black;
     font-size: 30px;
     line-height: 1.5;
     margin-bottom: 15px;
-}
-
-/* List spacing */
-.faq-content ul {
+  }
+  
+  /* List spacing */
+  .faq-content ul {
     padding-left: 20px;
     margin-bottom: 40px;
-}
-
-/* Course Introduction with Image */
-.course-intro {
+  }
+  
+  /* Course Introduction with Image */
+  .course-intro {
     display: flex;
     align-items: flex-start;
     gap: 100px;
     margin-bottom: 50px;
-}
-
-.course-text {
+  }
+  
+  .course-text {
     flex: 1;
     max-width: calc(100% - 450px);
-}
-
-/* Image styles */
-.computer-icon-1,
-.computer-icon-2,
-.computer-icon-3 {
+  }
+  
+  /* also left-align the h1 inside each course-text block */
+  .course-text h1 {
+    text-align: left;
+  }
+  
+  /* Image styles */
+  .computer-icon-1,
+  .computer-icon-2,
+  .computer-icon-3 {
     width: 300px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     object-fit: contain;
     margin-top: 50px;
-}
-
-.computer-icon-1 {
+  }
+  
+  .computer-icon-1 {
     margin-top: 0;
-}
-
-.computer-icon-3 {
+  }
+  
+  .computer-icon-3 {
     margin-top: 75px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
     .faq-content {
-        margin-left: 20px;
-        margin-right: 20px;
+      margin-left: 20px;
+      margin-right: 20px;
     }
-
+  
     .course-intro {
-        flex-direction: column;
-        gap: 30px;
-        margin-bottom: 40px;
+      flex-direction: column;
+      gap: 30px;
+      margin-bottom: 40px;
     }
-
+  
     .course-text {
-        max-width: 100%;
+      max-width: 100%;
     }
-
+  
     .computer-icon-1,
     .computer-icon-2,
     .computer-icon-3 {
-        width: 100%;
-        max-width: 300px;
-        margin: 20px auto;
+      width: 100%;
+      max-width: 300px;
+      margin: 20px auto;
     }
-
+  
     .faq-content > h1 {
-        margin-top: 30px;
-        margin-bottom: 15px;
+      margin-top: 30px;
+      margin-bottom: 15px;
     }
-
+  
     .faq-content p {
-        margin-bottom: 20px;
+      margin-bottom: 20px;
     }
-
+  
     .faq-content ul {
-        margin-bottom: 30px;
+      margin-bottom: 30px;
     }
-}
+  }
+  

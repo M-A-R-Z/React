@@ -1,0 +1,142 @@
+/* Page wrapper: stack & center all sections */
+.statistics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 20px;
+    font-family: sans-serif;
+    color: #222;
+  }
+  
+  /* ——— Doughnut chart container ——— */
+  .graphD {
+    width: 100%;
+    max-width: 600px;           /* cap at 600px */
+    margin: 50px auto;          /* center horizontally */
+    padding: 20px;              /* space inside border */
+    display: flex;
+    flex-direction: column;     /* stack chart + label */
+    align-items: center;
+    background-color: #fff;
+    border: 3px solid #000;
+    border-radius: 10px;
+    box-sizing: border-box;
+  }
+  
+  /* force the chart canvas to fit inside */
+  .graphD > canvas {
+    width: 100% !important;
+    max-height: 500px !important;  /* or whatever height you need */
+  }
+  
+  /* label now sits below, centered */
+  .graphD-label {
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  
+  /* ——— Dark-blue scatter panel ——— */
+  .scatter-panel {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #1a237e; /* your dark-blue */
+    border: 5px solid #000;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+    color: #fff;
+  }
+
+  /* justify the paragraph under the full‐width scatter */
+.scatter-panel .scatter-img-full p {
+    text-align: justify;
+    line-height: 1.6;      /* optional: improve readability */
+    margin-top: 20px;       /* optional: give it some breathing room */
+    font-size: 25px; 
+    margin-left: 20px;
+    margin-right: 20px;       /* optional: match your other text sizing */
+  }
+  
+  
+  /* Rows inside the scatter panel */
+  .scatter-row {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 30px;
+  }
+  
+  /* Top row: split into two equal columns */
+  .scatter-top .scatter-img,
+  .scatter-top .scatter-text {
+    flex: 1;
+  }
+  
+  /* Image styling */
+  .scatter-img img,
+  .scatter-img-full img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+  
+  /* Text block next to the first scatter image */
+  .scatter-text p {
+    font-size: 30px;
+    line-height: 1.5;
+    text-align: justify;
+    margin: 0;
+    margin-right: 50px;
+  }
+  
+  /* Bottom row: full-width image */
+  .scatter-bottom {
+    justify-content: center;
+  }
+
+  .scatter-bottom > p {
+    font-size: 30px;
+    line-height: 1.5;
+    text-align: justify;
+    margin: 0;
+    margin-right: 50px;
+  }
+  
+  .scatter-img-full {
+    position: relative;
+    width: 100%;
+  }
+  
+  /* ——— Table styling ——— */
+  .statistics table {
+    width: 85%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+  }
+  
+  .statistics th,
+  .statistics td {
+    border: 2px solid #000;
+    padding: 12px 8px;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .statistics th {
+    background-color: #1a237e;
+    font-weight: bold;
+    color: #FFFFFF;
+  }
+  
+  /* Caption below the table */
+  .table-caption {
+    max-width: 85%;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+  

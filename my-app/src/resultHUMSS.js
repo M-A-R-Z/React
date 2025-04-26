@@ -54,8 +54,7 @@ return (
                         ))}
                     </ul>
                     <p>
-                        The final recommendation was determined based on the strand with the highest overall weight, which resulted as
-                        <strong>HUMMSS</strong> being the most prominent out of the other strands.
+                        The final recommendation was determined based on the strand with the highest overall weight, which resulted as HUMMSS being the most prominent out of the other strands.
                     </p>
                 </div>
             )}

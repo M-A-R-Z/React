@@ -11,7 +11,7 @@ import { Bar, Doughnut } from 'react-chartjs-2';
 
 function ResultABM() {
     const location = useLocation();
-    const { STEM, HUMSS, ABM, K } = location.state || {};
+    const { stem_score, humss_score, abm_score, k, tie, tie_strands} = location.state || {};
 
 return (
     <>
@@ -24,7 +24,7 @@ return (
                 labels: ["STEM", "HUMSS", "ABM"], 
                 datasets: [{
                   label: "Your answers are near to this amount", 
-                  data: [STEM, HUMSS, ABM], 
+                  data: [stem_score, humss_score, abm_score], 
                   backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
                   borderRadius: 5
                 }]
@@ -32,7 +32,7 @@ return (
                 scales: {
                   y: {
                     beginAtZero: true,
-                    max: K 
+                    max: k 
                   }
                 }
               }}
@@ -41,6 +41,25 @@ return (
             <p>Based on your answers, PathFinder suggests the ABM (Accountancy, Business, Management) strand is the best fit for you. This strand aligns with your skills, interests, and goals.</p>
             <p>The ABM strand opens doors to dynamic and high-demand careers. By pursuing any of these courses, you’ll be equipped with skills for professions that significantly impact society while offering competitive salaries.</p>
             {/* Add your search result content here */}
+            {tie && (
+                <div className="tie-container">
+                    <h2>Weighted Distance Analysis</h2>
+                    <p>
+                        A tie has been detected between the top recommended strands. Based on weighted distance analysis, the following strands received equal consideration:
+                    </p>
+                    <ul>
+                        {Object.entries(tie_strands).filter(([key]) => key !== "results_id").map(([strand, weight]) => (
+                            <li key={strand}>
+                                {strand}: {weight.toFixed(4)}
+                            </li>
+                        ))}
+                    </ul>
+                    <p>
+                        The final recommendation was determined based on the strand with the highest overall weight, which resulted as
+                        <strong>HUMMSS</strong> being the most prominent out of the other strands.
+                    </p>
+                </div>
+            )}
         </div>
     
         <div className="bottom-container">

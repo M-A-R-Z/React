@@ -13,6 +13,7 @@ import ResultSTEM from './resultSTEM'; // For STEM results
 import ResultABM from './resultABM'; // For ABM results
 import ResultHUMSS from './resultHUMSS'; // For HUMSS results
 import AssessmentPage from './Assessment'; // For Assessment component
+import Statistics from'./statistics'; // For Statistics component
 import UserdashboardAssessment from './Userdashboard-assessment'; // For Assessment component
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/ResultABM" element={<ResultABM />} />
         <Route path="/ResultHUMSS" element={<ResultHUMSS />} />
         <Route path="/Assessment" element={<AssessmentPage />} />
+        <Route path="/statistics" element={<Statistics />} />
         <Route path="/UserdashboardAssessment" element={<UserdashboardAssessment />} />
         {/* Add more routes as needed */}
       </Routes>

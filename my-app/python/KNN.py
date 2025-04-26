@@ -50,24 +50,30 @@ class KNN:
         total_stem = nearest_neighbors.count("STEM")
         total_humss = nearest_neighbors.count("HUMSS")
         total_abm = nearest_neighbors.count("ABM")
-        strand_votes = {"STEM": total_stem, "HUMSS": total_humss, "ABM": total_abm}
+        strand_votes = {"stem_score": total_stem, "humss_score": total_humss, "abm_score": total_abm}
         vote_score = [total_stem, total_humss, total_abm]
         print(f"Votes: {strand_votes}")
         if vote_score.count(max(vote_score)) > 1:
             strand_votes["tie"] = True
-            recommendation = self.tie_breaker(strand_votes, nearest_neighbors, distances)
+            strand_votes["tie_strands"] = {}
+            recommendation = self.tie_breaker(strand_votes, nearest_neighbors, distances, max(vote_score))
             
             
         else:
-            strand_votes["tie"] = False
-            recommendation = max(strand_votes, key=strand_votes.get)
+            strand_votes["tie"] = False           
+            strand_votes["tie_strands"] = None
+            recommendation = max(["stem_score", "humss_score", "abm_score"], key=strand_votes.get)
+            
             print(f"Recommendation: {recommendation}")
-        strand_votes["recommendation"] = recommendation
+
+        fixed_recommendation = self.fix_recommendation(recommendation)
+        print(f"Recommendation: {fixed_recommendation}")
+        strand_votes["recommendation"] = fixed_recommendation  
         strand_votes["neighbors"] = []
-        strand_votes["K"] = k
+        strand_votes["k"] = k
         for i in range(k):
             strand_votes["neighbors"].append({})
-            strand_votes["neighbors"][i]["id"] = int(indices[i] + 1)
+            strand_votes["neighbors"][i]["neighbor_index"] = int(indices[i] + 1)
             strand_votes["neighbors"][i]["strand"] = nearest_neighbors[i]
             strand_votes["neighbors"][i]["distance"] = float(distances[i])
         
@@ -75,25 +81,54 @@ class KNN:
         return strand_votes
 
 
-    def tie_breaker(self, strand_votes, nearest_neighbors, distances):
-        tied_strands = [key for key, value in strand_votes.items() if value == max(strand_votes.values())]
-        print(f"Tie between: {tied_strands}")
-        weighted_distances = {"STEM": 0, "HUMSS": 0, "ABM":0}
-        strand_votes["tie_strands"] = {}
-        for i in range(len(nearest_neighbors)):
-            if nearest_neighbors[i] in tied_strands:
-                convert_to_weighted = float(1/distances[i])
-                
-                weighted_distances[nearest_neighbors[i]] += convert_to_weighted
-        for strand in weighted_distances:
-            if weighted_distances[strand] != 0:
-                strand_votes["tie_strands"][strand] = float(weighted_distances[strand])
-        print(f"Weighted Distances: {weighted_distances}")
+    def tie_breaker(self, strand_votes, nearest_neighbors, distances, tie_score):
+        tied_strands = {}
         
-                
-        recommendation = max(weighted_distances, key=weighted_distances.get)
+        # Initialize weights for tied strands
+        for key in strand_votes:
+            if strand_votes[key] == tie_score:
+                if key == "stem_score":
+                    tied_strands["stem_weight"] = 0
+                elif key == "humss_score":
+                    tied_strands["humss_weight"] = 0
+                elif key == "abm_score":
+                    tied_strands["abm_weight"] = 0
+
+        print(f"Tie between: {tied_strands}")
+
+        # Calculate weighted distances for tied strands
+        for i in range(len(nearest_neighbors)):
+            convert_to_weighted = float(1 / distances[i])
+            
+            if nearest_neighbors[i] == "STEM" and "stem_weight" in tied_strands:
+                tied_strands["stem_weight"] += convert_to_weighted
+            elif nearest_neighbors[i] == "HUMSS" and "humss_weight" in tied_strands:
+                tied_strands["humss_weight"] += convert_to_weighted
+            elif nearest_neighbors[i] == "ABM" and "abm_weight" in tied_strands:
+                tied_strands["abm_weight"] += convert_to_weighted
+
+        # Determine the final recommendation based on weighted distances
+        recommendation = max(tied_strands, key=tied_strands.get)
+        if recommendation == "stem_weight":
+            recommendation = "stem_score"
+        elif recommendation == "humss_weight": 
+            recommendation = "humss_score"
+        elif recommendation == "abm_weight":
+            recommendation = "abm_score"
         print(f"Final Recommendation: {recommendation}")
-        return recommendation     
+        
+        strand_votes["tie"] = True
+        strand_votes["tie_strands"] = tied_strands
+        return recommendation
+    
+    def fix_recommendation(self, recommendation):
+        if recommendation == "stem_weight" or recommendation == "stem_score":
+            return "STEM"
+        elif recommendation == "hummss_weight" or recommendation == "humss_score":
+            return "HUMSS"
+        elif recommendation == "abm_weight" or recommendation == "abm_score":
+            return "ABM"
+  
   
 
 

@@ -14,6 +14,7 @@ app = Flask(__name__)
 CORS(app)
 
 def run_algorithm(user_dataset):
+    clear_table() #<-----REMOVE THIS IN THE FUTURE
     dataset_list = []
     strand_list = []
     dataset_values = []
@@ -33,6 +34,12 @@ def run_algorithm(user_dataset):
     results = algorithm.start_algorithm()
     print(results)
     return results
+
+def clear_table(): #<-----REMOVE THIS IN THE FUTURE
+    
+    sql.wipe_data_of_table("neighbors")
+    sql.wipe_data_of_table("tie_table")  
+    sql.wipe_data_of_table("results")
 
 
 def merge_strand_answers(answers): 
@@ -64,9 +71,57 @@ def submit_answers():
     answers = data.get('answers', [])
     print(f"Test {answers}")
     user_dataset = merge_strand_answers(answers) 
-    reults_data = run_algorithm(user_dataset)
-    print(f"Results: {reults_data}")
-    return jsonify(reults_data)
+    results_data = run_algorithm(user_dataset)
+
+    results_table = results_data.copy()
+    del results_table["neighbors"]
+    del results_table["tie_strands"]
+    results_response = sql.supabase_insert("results", results_table)
+    print(f"Results: {results_table}")
+    print(results_response)
+    id = results_response["id"]
+    print(type(id))
+
+    for i in range(len(results_data["neighbors"])):
+
+        neighbors_table = results_data["neighbors"][i]   
+        neighbors_table["results_id"] = id
+        print(f"Neighbors: {neighbors_table}")
+        neighbors_response = sql.supabase_insert("neighbors", neighbors_table)
+        print(neighbors_response)
+    if results_data["tie_strands"]:
+        tie_strands_table = results_data["tie_strands"]
+        tie_strands_table["results_id"] = id
+        print(f"Tie Strands: {tie_strands_table}")
+
+        tie_response = sql.supabase_insert("tie_table", tie_strands_table)
+        print(tie_response)
+    print(f"Results Full: {results_data}")
+    return jsonify(results_data)
+
+@app.route("/statistics")
+def get_neighbors():
+    neighbors = sql.select_neighbors()
+    
+    # Fetch the latest result with scores
+    results = sql.select_latest_results()  # You'll implement this
+    if results:
+        latest_result = results[0]  # Assuming results are sorted by latest first
+        response = {
+            "stem_score": latest_result["stem_score"],
+            "humss_score": latest_result["humss_score"],
+            "abm_score": latest_result["abm_score"],
+            "neighbors": neighbors
+        }
+    else:
+        response = {
+            "stem_score": 0,
+            "humss_score": 0,
+            "abm_score": 0,
+            "neighbors": neighbors
+        }
+
+    return jsonify(response)
 
 
 if __name__ == '__main__':

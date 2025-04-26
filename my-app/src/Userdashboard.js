@@ -21,7 +21,7 @@ function Userdashboard() {
             <NavLink to="/UserdashboardAssessment" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
                 <img src={AssessmentIcon} alt="UserdashboardAssessment" />
             </NavLink>
-            <NavLink to="/" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
+            <NavLink to="/statistics" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
                 <img src={StatisticsIcon} alt="Statistics" />
             </NavLink>
             <NavLink to="/Userdashboard-Courses" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>

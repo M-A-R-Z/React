@@ -15,9 +15,25 @@ class SupaBaseConnector:
     def select_questions(self):
         response = self.supabase.table("questions").select("*").execute()
         return response.data
+    
+    def select_neighbors(self):
+        response = self.supabase.table("neighbors").select("*").execute()
+        return response.data
 
     def fetch_data(self):
         return self.select_initial_data()
+    
+    def supabase_insert(self, table_name, data):
+        response = self.supabase.table(table_name).insert(data).execute()
+        return response.data[0]
+
+    def wipe_data_of_table(self, table_name):
+        response = self.supabase.table(table_name).delete().gte('id', 0).execute()
+        print(response)
+
+    def select_latest_results(self):
+        response = self.supabase.table("results").select("*").order("id", desc=True).limit(1).execute()
+        return response.data
 
 
 

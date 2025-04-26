@@ -14,6 +14,7 @@ const likertOptions = [
 ];
 
 function AssessmentPage() {
+
   const [questions, setQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -33,6 +34,8 @@ function AssessmentPage() {
     });
   };
 
+  
+
   const handleNext = (e) => {
     e.preventDefault();
     if (currentIndex < questions.length - 1) {
@@ -45,11 +48,12 @@ function AssessmentPage() {
   const handleSubmit = async () => {
     const payload = { answers: Object.values(answers) };
     const { data } = await axios.post("http://localhost:5000/submit", payload);
-    const { recommendation, STEM, HUMSS, ABM, K } = data;
+    console.log("Response from server:", data);
+    const { recommendation, stem_score, humss_score, abm_score, k, tie, tie_strands } = data;
     let path = "/resultSTEM";
     if (recommendation === "HUMSS") path = "/resultHUMSS";
     else if (recommendation === "ABM") path = "/resultABM";
-    navigate(path, { state: { STEM, HUMSS, ABM, K } });
+    navigate(path, { state: { stem_score, humss_score, abm_score, k , tie, tie_strands} });
   };
 
   if (!questions.length) {

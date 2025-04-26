@@ -1,0 +1,128 @@
+/* General container styles */
+.career-container {
+    background-color: #141852;
+    padding: 40px 100px; /* Adjust padding as needed */
+    color: white;
+    overflow-x: hidden;
+    opacity: 80%;
+  }
+  
+  /* Container for intro box and image */
+  .intro-section {
+    display: flex;
+    margin-bottom: 30px; /* Space below this section */
+  }
+  
+  /* Intro box container */
+  .intro-box {
+    background-color: #141852; /* Match the background color of the text area in the image */
+    color: white; /* Ensure text is white */
+    padding: 30px;
+    border-radius: 0 15px 15px 0; /* Rounded corners only on the right, like the image */
+    flex: 1; /* Allow the box to take up available width */
+    margin-right: 0; /* Ensure no gap between box and image */
+  }
+  
+  /* Text content styles */
+  .pathfinder-paragraph {
+    font-size: 28px;
+    line-height: 1.6;
+    margin: 0;
+    text-align: left;
+    padding-right: 20px; /* Add some right padding for visual spacing within the box */
+  }
+  
+  .pathfinder-paragraph strong {
+    color: #ffd700;
+    font-weight: 600;
+  }
+  
+  /* Image styles */
+  .career-image {
+    height: auto;
+    width: auto;
+    max-height: none;
+    max-width: 50%; /* Allow image to take up to half the container */
+  }
+  
+  /* Make the image height try to match the box height */
+  .intro-section .career-image {
+    height: auto; /* Let natural height determine initially */
+    object-fit: contain; /* Show the whole image without cropping */
+  }
+  
+  /* Adjust image width to fit snugly next to the text */
+  .intro-section .career-image {
+    width: auto; /* Reset width */
+    flex-shrink: 0; /* Prevent image from shrinking */
+  }
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px; /* Space below the heading */
+    text-align: center; /* Center the heading */
+  }
+
+  p {
+    font-size: 28px;
+    line-height: 1.6;
+    margin: 0 0 20px; /* Space below each paragraph */
+    text-align: center; /* Center the paragraphs */
+  }
+  
+  .strand-image {
+    width: 1200px;
+    height: 200px;
+    max-width: 100%; /* Ensure it doesn't exceed the container width */
+    margin: 20px 0; /* Space above and below the image */
+  }
+
+  .strand-description {
+    font-size: 28px;
+    line-height: 1.6;
+    margin: 0 0 20px; 
+    text-align: left; 
+  }
+
+  .strand-description > p{
+    font-size: 28px;
+    line-height: 1.6;
+    margin: 0 0 20px; 
+    text-align: left; 
+  }
+
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .career-container {
+      padding: 20px;
+    }
+  
+    .intro-section {
+      flex-direction: column; /* Stack on smaller screens */
+      align-items: stretch; /* Make items take full width */
+      text-align: center; /* Center text */
+    }
+  
+    .intro-box {
+      padding: 20px;
+      border-radius: 0; /* No rounded corners when stacked */
+      margin-bottom: 20px;
+      max-width: 100%;
+    }
+  
+    .pathfinder-paragraph {
+      font-size: 24px;
+      text-align: left; /* Revert to left align for readability */
+      padding-right: 0;
+    }
+  
+    .career-image {
+      max-width: 100%;
+      height: auto;
+    }
+  
+    .first-paragraph,
+    .second-paragraph {
+      font-size: 26px;
+    }
+  }

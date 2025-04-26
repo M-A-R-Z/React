@@ -24,10 +24,10 @@ function Userdashboard() {
             <NavLink to="/" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
                 <img src={StatisticsIcon} alt="Statistics" />
             </NavLink>
-            <NavLink to="/" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
+            <NavLink to="/Userdashboard-Courses" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
                 <img src={CoursesIcon} alt="Courses" />
             </NavLink>
-            <NavLink to="/" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
+            <NavLink to="/Userdashboard-Careers" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>
                 <img src={CareersIcon} alt="Careers" />
             </NavLink>
             <NavLink to="/Userdashboard-FAQs" className={({ isActive }) => isActive ? 'icon active' : 'icon'}>

@@ -6,11 +6,11 @@ import "./Assessment.css";
 import Header from "./Header";
 
 const likertOptions = [
-  { value: 1, label: "Strongly Disagree", className: "red" },
-  { value: 2, label: "Disagree",        className: "red" },
-  { value: 3, label: "Neutral",         className: "white" },
-  { value: 4, label: "Agree",           className: "green" },
-  { value: 5, label: "Strongly Agree",  className: "green" },
+  { value: 1, label: "Strongly Disagree (1)", className: "red" },
+  { value: 2, label: "Disagree (2)",        className: "red" },
+  { value: 3, label: "Neutral (3)",         className: "white" },
+  { value: 4, label: "Agree (4)",           className: "green" },
+  { value: 5, label: "Strongly Agree (5)",  className: "green" },
 ];
 
 function AssessmentPage() {

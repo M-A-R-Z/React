@@ -49,7 +49,7 @@ function Statistics() {
             }}
           />
           <div className="graphD-label">
-            This Doughnut chart represents the <strong> K value </strong> used in the K-Nearest Neighbors algorithm.
+            This Doughnut chart illustrates the distribution of strands among the top K nearest neighbors identified by the K-Nearest Neighbors (KNN) algorithm.
           </div>
         </div>
 

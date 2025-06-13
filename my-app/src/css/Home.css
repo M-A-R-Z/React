@@ -1,0 +1,183 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/homepage_background.jpg');
+  background-size: cover;
+  background-blend-mode: darken;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Home Navigation Bar */
+.topnav {
+  overflow: hidden;
+  background-color: #141852;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Animation: Fade-in and Slide-down on Load */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply animation to each nav item */
+.topnav > * {
+  opacity: 0;
+  animation: fadeInDown 0.5s ease-out forwards;
+}
+
+/* Stagger animation delays */
+.topnav > *:nth-child(1) { animation-delay: 0.1s; }
+.topnav > *:nth-child(2) { animation-delay: 0.2s; }
+.topnav > *:nth-child(3) { animation-delay: 0.3s; }
+.topnav > *:nth-child(4) { animation-delay: 0.4s; }
+.topnav > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* Move the first nav item (logo) to the left */
+.topnav a:first-child {
+  margin-right: auto;
+}
+
+/* Default link styles */
+.topnav a {
+  color: #FFFFFF;
+  text-align: center;
+  padding-right: 30px;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+/* Hover effect: change color and slight lift */
+.topnav a:hover {
+  color: #8A8A8A;
+  transform: translateY(-2px);
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.topnav a.logo img {
+  max-height: 100px;
+  width: 300px;
+}
+
+.topnav a img:hover {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+/* Active link underline */
+.topnav a.active {
+  text-decoration: underline;
+  text-decoration-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+/* Responsive CSS codes */
+@media (max-width: 768px) {
+  .topnav a {
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    margin-left: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .topnav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .topnav a {
+    width: 100%;
+    text-align: left;
+    padding: 12px;
+    margin: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Home Page Containers */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+/* Animation for container content on load */
+.container > * {
+  opacity: 0;
+  animation: fadeInDown 0.5s ease-out forwards;
+}
+.container > *:nth-child(1) { animation-delay: 0.6s; }
+.container > *:nth-child(2) { animation-delay: 0.7s; }
+
+/* Image hover container */
+.img-container {
+  position: relative;
+  width: 50%;
+  display: block;
+}
+
+/* Both images take full container width */
+.img-container img {
+  display: block;
+  width: 100%;
+  transition: opacity 0.3s ease;
+}
+
+/* Default image is visible by default */
+.defaultImg {
+  opacity: 1;
+  border-radius: 22px;
+}
+
+/* Hover image is initially hidden and positioned on top */
+.hoverImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  border-radius: 22px;
+}
+
+/* On hover, show the hover image and hide the default image */
+.img-container:hover .hoverImg {
+  opacity: 1;
+}
+
+.img-container:hover .defaultImg {
+  opacity: 0;
+}
+
+p {
+  color: #FFFFFF;
+  font-size: 48px;
+  text-align: center;
+}
+
+/* UserIcon */
+.user-icon {
+  width: 66px;
+}
+
+.user-icon:hover {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
